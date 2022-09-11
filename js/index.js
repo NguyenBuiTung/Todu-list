@@ -1,6 +1,7 @@
 
 let arr = []
-document.querySelector('#addItem').onclick = function () {
+document.querySelector('#addItem').onclick = () => {
+
     let valueinput = document.querySelector('#newTask').value
     arr.push(valueinput)
     // console.log(arr)
@@ -11,7 +12,7 @@ document.querySelector('#addItem').onclick = function () {
         <li >
         <span>${arr[item]}</span>
         <i class="fa fa-trash" aria-hidden="true"></i>
-        <i class="fa fa-check-circle" aria-hidden="true" onclick="checkWork('${item}')"></i>
+        <i class="fa fa-check-circle" aria-hidden="true" onclick="checkWork('${arr[item]}')"></i>
         </li>
         `
         // console.log(item)
@@ -19,26 +20,25 @@ document.querySelector('#addItem').onclick = function () {
     }
     document.querySelector('#todo').innerHTML = html
 }
-// let arrInput=[...arr]
+let arrInput = []
 window.checkWork = (id) => {
     // let valueinput = document.querySelector('#newTask').value
     // arr.push(valueinput)
     // console.log(arrInput)
     let html1 = ''
-    for (let item in arr) {
-        // console.log(item)
-        if (item === id) {
-            // console.log(arrInput[item])
-            let html2 = `
+    console.log(arr, arrInput)
+    let itemClicked = arr.find(item => item === id)
+    console.log("clickkkk", itemClicked)
+    if (!itemClicked) return
+    arrInput.push(itemClicked)
+    for (let item in arrInput) {
+        html1 += `
         <li >
-        <span>${arr[item]}</span>
+        <span>${arrInput[item]}</span>
         <i class="fa fa-trash" aria-hidden="true"></i>
         <i class="fa fa-check-circle" aria-hidden="true"></i>
         </li>
         `
-            // console.log(item)
-            html1 += html2
-        }
     }
     document.querySelector('#completed').innerHTML = html1
 }
