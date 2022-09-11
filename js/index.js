@@ -112,7 +112,6 @@ function layCongViec() {
     if (localStorage.getItem('arr') && localStorage.getItem('arrInput')) {
         arr = JSON.parse(localStorage.getItem('arr'))
         arrInput = JSON.parse(localStorage.getItem('arrInput'))
-
     }
 }
 window.onload = function () {
